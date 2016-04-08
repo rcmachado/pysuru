@@ -8,7 +8,7 @@ Install
 
 .. code:: shell
 
-    pip install psuru
+    pip install pysuru
 
 Works on Python 2.7 and 3.5.
 
