@@ -31,4 +31,4 @@ Developing
 License
 -------
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](./LICENSE).
