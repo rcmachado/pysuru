@@ -24,9 +24,17 @@ Usage
 Developing
 ----------
 
+Install development requirements:
+
 .. code:: shell
 
     pip install -r requirements.txt
+
+Run the tests:
+
+.. code:: shell
+
+    py.test --cov=pysuru
 
 License
 -------
