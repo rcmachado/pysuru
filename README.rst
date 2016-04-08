@@ -12,6 +12,15 @@ Install
 
 Works on Python 2.7 and 3.5.
 
+Usage
+-----
+
+.. code:: python
+
+    tsuru = TsuruAPI('<target>', '<token>')
+    for app in tsuru.apps():
+        print(app.name)
+
 Developing
 ----------
 
