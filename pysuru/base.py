@@ -29,6 +29,3 @@ class BaseAPI(object):
 
     def request(self, method, path):
         return self.conn.request(method, self.build_url(path))
-
-    def apps(self):
-        return AppsAPI(self.target, self.token)
