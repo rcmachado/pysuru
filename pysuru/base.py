@@ -25,7 +25,7 @@ class BaseAPI(object):
         }
 
     def build_url(self, url):
-        return '{}{}'.format(self.target, url)
+        return '{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
 
     def request(self, method, path):
         return self.conn.request(method, self.build_url(path))
