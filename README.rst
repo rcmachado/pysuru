@@ -17,6 +17,8 @@ Usage
 
 .. code:: python
 
+    from pysuru import tsuruAPI
+
     tsuru = TsuruAPI('<target>', '<token>')
     for app in tsuru.apps():
         print(app.name)
