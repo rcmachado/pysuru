@@ -18,7 +18,8 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     install_requires=[
-        'urllib3>=1.15'
+        'urllib3>=1.15',
+        'certifi'
     ]
     packages=['pysuru'],
     platforms=['linux', 'osx']
