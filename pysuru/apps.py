@@ -42,3 +42,10 @@ class AppsAPI(BaseAPI):
 
     def __getitem__(self, key):
         return self.data[key]
+
+    def update(self, name, data):
+        http_response = self.post_json('/apps/{}'.format(name), data)
+        if http_response.status == 200:
+            return True
+        else:
+            return False

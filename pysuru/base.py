@@ -1,4 +1,6 @@
 # coding: utf-8
+import json
+
 import certifi
 from urllib3 import PoolManager
 
@@ -29,3 +31,8 @@ class BaseAPI(object):
 
     def request(self, method, path):
         return self.conn.request(method, self.build_url(path), headers=self.headers)
+
+    def post_json(self, path, payload):
+        body = json.dumps(payload)
+        return self.conn.urlopen('POST', self.build_url(path),
+                                 headers=self.headers, body=body)
