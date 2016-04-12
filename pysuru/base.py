@@ -28,4 +28,4 @@ class BaseAPI(object):
         return '{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
 
     def request(self, method, path):
-        return self.conn.request(method, self.build_url(path))
+        return self.conn.request(method, self.build_url(path), headers=self.headers)
