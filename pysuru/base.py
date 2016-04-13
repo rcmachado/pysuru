@@ -36,3 +36,11 @@ class BaseAPI(object):
         body = json.dumps(payload)
         return self.conn.urlopen('POST', self.build_url(path),
                                  headers=self.headers, body=body)
+
+
+class ObjectMixin(object):
+    @classmethod
+    def create(cls, **kwargs):
+        """Remove any unknown field from kwargs and return the object"""
+        attrs = {k: kwargs.get(k, None) for k in cls._fields}
+        return cls(**attrs)
