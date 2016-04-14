@@ -10,7 +10,6 @@ SERVICE_INSTANCE_ATTRS = (
     'description',
     'type',
     'plan',
-    'teamOwner',
 )
 
 
