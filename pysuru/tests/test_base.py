@@ -7,6 +7,13 @@ def test_baseapi_headers_should_return_authorization_header():
     assert {'Authorization': 'bearer TOKEN'} == api.headers
 
 
+def test_baseapi_conn_should_return_same_object():
+    api = BaseAPI(None, None)
+    obj1 = api.conn
+    obj2 = api.conn
+    assert obj1 is obj2
+
+
 def test_build_url_should_return_full_api_endpoint():
     api = BaseAPI('http://example.com/', None)
     assert 'http://example.com/apis' == api.build_url('/apis')
