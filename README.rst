@@ -41,4 +41,4 @@ Run the tests:
 License
 -------
 
-MIT. See [LICENSE](./LICENSE).
+MIT. See [LICENSE](LICENSE).
