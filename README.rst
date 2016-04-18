@@ -41,4 +41,7 @@ Run the tests:
 License
 -------
 
-MIT. See [LICENSE](LICENSE).
+MIT. See LICENSE_.
+
+
+.. _LICENSE: ./LICENSE
