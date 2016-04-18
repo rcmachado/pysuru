@@ -20,3 +20,11 @@ for app in api.apps():
 
 # Update one specific app
 api.apps().update('my-awesome-app', {'description': 'My awesome app'})
+
+# Get information for one app
+app = App.get('my-awesome-app')
+print('%s: %s' % (app.name, app.description))
+
+# List all services instances for app
+for service in app.services:
+    print('Service: %s' % service.name)
