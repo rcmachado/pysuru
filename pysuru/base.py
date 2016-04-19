@@ -29,6 +29,16 @@ class BaseAPI(object):
     def build_url(self, url):
         return '{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
 
+    def get_request(self, path):
+        url = self.build_url(path)
+        response = self.conn.request('GET', url, headers=self.headers)
+
+        content = None
+        if response.data:
+            content = json.loads(response.data.decode('utf-8'))
+
+        return response.status, content
+
     def request(self, method, path):
         return self.conn.request(method, self.build_url(path), headers=self.headers)
 

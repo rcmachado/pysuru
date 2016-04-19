@@ -26,32 +26,30 @@ class AppsAPI(BaseAPI):
     _data = []
 
     @property
-    def data(self):
+    def all(self):
         if not self._data:
-            http_response = self.request('GET', '/apps', headers=self.headers)
-            response = json.loads(http_response.data.decode('utf-8'))
+            status, response = self.get_request('/apps')
             for data in response:
                 self._data.append(App.create(**data))
         return self._data
 
     def __len__(self):
-        return len(self.data)
+        return len(self.all)
 
     def __iter__(self):
-        return iter(self.data)
+        return iter(self.all)
 
     def __getitem__(self, key):
-        return self.data[key]
+        return self.all[key]
 
     def get(self, name):
-        http_response = self.request('GET', '/apps/{}'.format(name))
-        if http_response.status == 404:
+        status, response = self.get_request('/apps/{}'.format(name))
+        if status == 404:
             raise AppDoesNotExists('App {} not found'.format(name))
 
-        if http_response.status != 200:
+        if status != 200:
             return False
 
-        response = json.loads(http_response.data.decode('utf-8'))
         data = {
             'name': response['name'],
             'description': response['description'],
