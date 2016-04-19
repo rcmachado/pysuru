@@ -25,7 +25,7 @@ Usage
     for app in tsuru.apps:
         print(app.name)
 
-Dcoumentation
+Documentation
 -------------
 
 Documentation is available at http://pysuru.readthedocs.org/.
