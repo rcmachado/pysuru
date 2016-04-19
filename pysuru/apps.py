@@ -1,6 +1,5 @@
 # coding: utf-8
 import json
-from builtins import tuple as _tuple
 from collections import namedtuple
 
 from pysuru.base import BaseAPI, ObjectMixin
