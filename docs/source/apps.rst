@@ -43,3 +43,17 @@ To get information for only one specific app, use the ``get`` method:
 Retrieving data for a specific app returns more information that
 listing them - but be aware that for each ``get`` call we make one call
 for the ``/apps/<app_name>`` api.
+
+Creating app
+------------
+
+You can call ``add`` to create an app:
+
+.. code:: python
+
+    api = AppsAPI('<TARGET>', '<TOKEN>')
+    created = api.add({
+        'name': 'my-awesome-app',
+        'description': 'My Awesome App does something very cool',
+        'pool': 'my-pool',
+    })
