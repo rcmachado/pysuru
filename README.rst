@@ -22,7 +22,7 @@ Usage
     from pysuru import TsuruAPI
 
     tsuru = TsuruAPI('<target>', '<token>')
-    for app in tsuru.apps():
+    for app in tsuru.apps:
         print(app.name)
 
 Dcoumentation
@@ -43,7 +43,7 @@ Run the tests:
 
 .. code:: shell
 
-    py.test --cov=pysuru
+    make test
 
 License
 -------
