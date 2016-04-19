@@ -1,7 +1,7 @@
 pysuru
 ======
 
-|docs_build|
+|tests_build| |docs_build|
 
 Python lib to access Tsuru API.
 
@@ -52,6 +52,9 @@ MIT. See LICENSE_.
 
 
 .. _LICENSE: ./LICENSE
+.. |tests_build| image:: https://travis-ci.org/rcmachado/pysuru.svg?branch=master
+    :target: https://travis-ci.org/rcmachado/pysuru
+    :alt: Tests
 .. |docs_build| image:: https://readthedocs.org/projects/pysuru/badge/?version=latest
     :target: http://pysuru.readthedocs.org/
     :alt: Build status of documentation
