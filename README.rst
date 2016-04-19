@@ -1,6 +1,8 @@
 pysuru
 ======
 
+|docs_build|
+
 Python lib to access Tsuru API.
 
 Install
@@ -22,6 +24,11 @@ Usage
     tsuru = TsuruAPI('<target>', '<token>')
     for app in tsuru.apps():
         print(app.name)
+
+Dcoumentation
+-------------
+
+Documentation is available at http://pysuru.readthedocs.org/.
 
 Developing
 ----------
@@ -45,3 +52,6 @@ MIT. See LICENSE_.
 
 
 .. _LICENSE: ./LICENSE
+.. |docs_build| image:: https://readthedocs.org/projects/pysuru/badge/?version=latest
+    :target: http://pysuru.readthedocs.org/
+    :alt: Build status of documentation
