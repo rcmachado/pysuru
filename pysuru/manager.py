@@ -12,5 +12,6 @@ class TsuruAPI(object):
         self.target = target
         self.token = token
 
+    @property
     def apps(self):
         return AppsAPI(self.target, self.token)

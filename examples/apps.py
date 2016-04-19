@@ -15,11 +15,11 @@ if not TSURU_TARGET or not TSURU_TOKEN:
 api = TsuruAPI(TSURU_TARGET, TSURU_TOKEN)
 
 # List all apps that this token has access to
-for app in api.apps():
+for app in api.apps:
     print(app.name)
 
 # Update one specific app
-api.apps().update('my-awesome-app', {'description': 'My awesome app'})
+api.apps.update('my-awesome-app', {'description': 'My awesome app'})
 
 # Get information for one app
 app = App.get('my-awesome-app')
