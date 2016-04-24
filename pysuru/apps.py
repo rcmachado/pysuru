@@ -27,7 +27,7 @@ class AppsAPI(BaseAPI):
     @property
     def all(self):
         if not self._data:
-            status, response = self.get_request('/apps')
+            status, response = self.client.get('/apps')
             for data in response:
                 self._data.append(App.create(self.client, **data))
         return self._data
@@ -42,7 +42,7 @@ class AppsAPI(BaseAPI):
         return self.all[key]
 
     def get(self, name):
-        status, response = self.get_request('/apps/{}'.format(name))
+        status, response = self.client.get('/apps/{}'.format(name))
         if status == 404:
             raise AppDoesNotExists('App {} not found'.format(name))
 

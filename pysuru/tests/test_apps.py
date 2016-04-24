@@ -10,14 +10,14 @@ from pysuru.apps import App, AppsAPI
 
 
 def test_appsapi_all_should_return_list_of_apps(tsuru_apps_list):
-    AppsAPI.get_request = mock.MagicMock()
-    AppsAPI.get_request.return_value = (200, json.loads(tsuru_apps_list))
+    client = mock.MagicMock()
+    client.get.return_value = (200, json.loads(tsuru_apps_list))
 
-    apps = AppsAPI(None)
+    apps = AppsAPI(client)
 
     assert 3 == len(apps.all)
     assert isinstance(apps.all[0], App)
-    assert AppsAPI.get_request.call_args_list == [mock.call('/apps')]
+    assert client.get.call_args_list == [mock.call('/apps')]
 
 
 def test_update_should_make_request_with_correct_payload():

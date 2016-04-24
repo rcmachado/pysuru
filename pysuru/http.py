@@ -1,4 +1,6 @@
 # coding: utf-8
+import json
+
 import certifi
 from urllib3 import PoolManager
 
@@ -40,6 +42,19 @@ class HttpClient(object):
         headers.update(self.headers)
         url = self.build_url(path)
         return self.conn.urlopen(method, url, headers=headers, body=body)
+
+    def get(self, *args, **kwargs):
+        """
+        Make GET requests against API
+
+        Wrapper for ``urlopen`` to make GET requests. Assume that
+        responses are encoded as JSON and decodes them appropriately.
+        """
+        response = self.urlopen('GET', *args, **kwargs)
+        content = None
+        if response.data:
+            content = json.loads(response.data.decode('utf-8'))
+        return response.status, content
 
     def build_url(self, url):
         return '{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
