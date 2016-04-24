@@ -1,2 +1,2 @@
 # coding: utf-8
-from pysuru.manager import Tsuru
+from pysuru.tsuru import Tsuru

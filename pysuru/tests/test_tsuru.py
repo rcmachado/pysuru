@@ -4,10 +4,10 @@ try:
 except ImportError:
     import mock
 
-from pysuru.manager import Tsuru
+from pysuru.tsuru import Tsuru
 
 
-@mock.patch('pysuru.manager.AppsAPI')
+@mock.patch('pysuru.tsuru.AppsAPI')
 def test_apps_should_create_appsapi_object(AppsAPI, tsuru_apps_list):
     api = Tsuru('TARGET', 'TOKEN')
     api.apps()
