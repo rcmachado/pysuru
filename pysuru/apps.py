@@ -78,8 +78,9 @@ class AppsAPI(BaseAPI):
             return False
 
     def bind_service(self, name, service_instance):
-        path = '/services/{}/instances/{}/{}'.format(service_instance.type, service_instance.name, name)
-        http_response = self.request('PUT', path)
+        path = ('/services/{}/instances/{}/{}'
+                .format(service_instance.type, service_instance.name, name))
+        http_response = self.client.urlopen('PUT', path)
         if http_response.status == 200:
             return True
         return False

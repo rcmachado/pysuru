@@ -18,9 +18,6 @@ class BaseAPI(object):
 
         return response.status, content
 
-    def request(self, method, path):
-        return self.client.urlopen(method, path)
-
 
 class ObjectMixin(object):
     @classmethod
