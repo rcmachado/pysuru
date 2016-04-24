@@ -8,4 +8,4 @@ Instead of importing each module individually (eg.
 from __future__ import absolute_imports
 
 from .apps import AppsAPI
-from .services import ServicesAPI
+from .services import ServiceInstanceAPI
