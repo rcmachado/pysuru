@@ -27,7 +27,7 @@ class AppsAPI(BaseAPI):
     @property
     def all(self):
         if not self._data:
-            status, response = self.client.get('/apps')
+            _, response = self.client.get('/apps')
             for data in response:
                 self._data.append(App.create(self.client, **data))
         return self._data

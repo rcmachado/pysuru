@@ -23,8 +23,7 @@ class ServiceInstance(_ServiceInstance, ObjectMixin):
 class ServiceInstanceAPI(BaseAPI):
     def filter_by_app(self, name):
         path = '/services/instances?app={}'.format(name)
-        http_response = self.client.urlopen('GET', path)
-        response = json.loads(http_response.data.decode('utf-8'))
+        _, response = self.client.get(path)
 
         services = []
         for service_data in response:
