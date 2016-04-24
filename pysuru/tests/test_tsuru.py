@@ -47,4 +47,4 @@ def test_apps_should_create_appsapi_object(AppsAPI, tsuru_apps_list):
     api = Tsuru('TARGET', 'TOKEN')
     api.apps()
 
-    assert AppsAPI.call_args_list[0] == mock.call('TARGET', 'TOKEN')
+    assert AppsAPI.call_args_list == [mock.call(api.client)]

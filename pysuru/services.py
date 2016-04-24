@@ -31,7 +31,7 @@ class ServiceInstanceAPI(BaseAPI):
                     'type': service_data['service'],
                     'plan': service_data['plans'][index],
                 }
-                services.append(ServiceInstance.create(**data))
+                services.append(ServiceInstance.create(self.client, **data))
         return services
 
     def add(self, data):

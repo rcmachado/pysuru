@@ -13,7 +13,7 @@ def test_appsapi_all_should_return_list_of_apps(tsuru_apps_list):
     AppsAPI.get_request = mock.MagicMock()
     AppsAPI.get_request.return_value = (200, json.loads(tsuru_apps_list))
 
-    apps = AppsAPI('TARGET', 'TOKEN')
+    apps = AppsAPI(None)
 
     assert 3 == len(apps.all)
     assert isinstance(apps.all[0], App)
@@ -26,7 +26,7 @@ def test_update_should_make_request_with_correct_payload():
 
     payload = {'random-field': 'random-value'}
 
-    apps = AppsAPI('TARGET', 'TOKEN')
+    apps = AppsAPI(None)
 
     assert apps.update('app-name', payload) is True
     assert AppsAPI.post_json.call_args_list[0] == mock.call('/apps/app-name', payload)

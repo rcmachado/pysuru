@@ -17,8 +17,8 @@ app_attrs = (
 
 class App(namedtuple('App', app_attrs), ObjectMixin):
     def services(self):
-        api = ServiceInstanceAPI(self.target, self.token)
-        return api.filter_by_app(self, self.name)
+        api = ServiceInstanceAPI(self._client)
+        return api.filter_by_app(self.name)
 
 
 class AppsAPI(BaseAPI):
@@ -29,7 +29,7 @@ class AppsAPI(BaseAPI):
         if not self._data:
             status, response = self.get_request('/apps')
             for data in response:
-                self._data.append(App.create(**data))
+                self._data.append(App.create(self.client, **data))
         return self._data
 
     def __len__(self):
@@ -57,7 +57,7 @@ class AppsAPI(BaseAPI):
             'team_owner': response['teamowner'],
             'platform': response['platform'],
         }
-        return App.create(**data)
+        return App.create(self.client, **data)
 
     def add(self, data):
         http_response = self.post_json('/apps', data)

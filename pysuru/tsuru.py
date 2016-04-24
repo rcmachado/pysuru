@@ -2,6 +2,7 @@
 import os
 
 from pysuru.apps import AppsAPI
+from pysuru.http import HttpClient
 
 
 class Tsuru(object):
@@ -34,7 +35,8 @@ class Tsuru(object):
 
         self.target = target
         self.token = token
+        self.client = HttpClient(target, token)
 
     @property
     def apps(self):
-        return AppsAPI(self.target, self.token)
+        return AppsAPI(self.client)
