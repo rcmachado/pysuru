@@ -19,9 +19,9 @@ Usage
 
 .. code:: python
 
-    from pysuru import TsuruAPI
+    from pysuru import Tsuru
 
-    tsuru = TsuruAPI('<target>', '<token>')
+    tsuru = Tsuru('<target>', '<token>')
     for app in tsuru.apps:
         print(app.name)
 

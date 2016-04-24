@@ -27,6 +27,10 @@ def test_build_url_should_return_full_api_endpoint():
     assert 'http://example.com/apis' == api.build_url('/apis')
 
 
+def test_baseapi_make_request_should_dispatch_call_to_urlopen():
+    pass
+
+
 def test_baseapi_get_request_should_return_parsed_data():
     api = BaseAPI('http://example.com', None)
 
