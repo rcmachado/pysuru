@@ -35,7 +35,9 @@ class ServiceInstanceAPI(BaseAPI):
         return services
 
     def add(self, data):
-        http_response = self.post_json('/services/instances', data)
+        body = json.dumps(data)
+        http_response = self.client.urlopen('POST', '/services/instances',
+                                            body=body)
         response = json.loads(http_response.data.decode('utf-8'))
         if response.status == 409:
             raise ServiceAlreadyExists()

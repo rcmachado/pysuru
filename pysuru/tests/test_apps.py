@@ -21,12 +21,13 @@ def test_appsapi_all_should_return_list_of_apps(tsuru_apps_list):
 
 
 def test_update_should_make_request_with_correct_payload():
-    AppsAPI.post_json = mock.MagicMock()
-    AppsAPI.post_json.return_value.status = 200
+    client= mock.MagicMock()
+    client.urlopen.return_value.status = 200
 
     payload = {'random-field': 'random-value'}
 
-    apps = AppsAPI(None)
+    apps = AppsAPI(client)
 
     assert apps.update('app-name', payload) is True
-    assert AppsAPI.post_json.call_args_list[0] == mock.call('/apps/app-name', payload)
+    assert client.urlopen.call_args_list == [
+        mock.call('POST', '/apps/app-name', body=json.dumps(payload))]

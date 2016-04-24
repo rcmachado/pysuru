@@ -21,10 +21,6 @@ class BaseAPI(object):
     def request(self, method, path):
         return self.client.urlopen(method, path)
 
-    def post_json(self, path, payload):
-        body = json.dumps(payload)
-        return self.client.urlopen('POST', path, body=body)
-
 
 class ObjectMixin(object):
     @classmethod

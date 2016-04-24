@@ -60,7 +60,8 @@ class AppsAPI(BaseAPI):
         return App.create(self.client, **data)
 
     def add(self, data):
-        http_response = self.post_json('/apps', data)
+        body = json.dumps(data)
+        http_response = self.client.urlopen('POST', '/apps', body=body)
         if http_response.status == 200:
             return True
         elif http_response.status == 409:
@@ -68,7 +69,9 @@ class AppsAPI(BaseAPI):
         return False
 
     def update(self, name, data):
-        http_response = self.post_json('/apps/{}'.format(name), data)
+        body = json.dumps(data)
+        http_response = self.client.urlopen('POST', '/apps/{}'.format(name),
+                                            body=body)
         if http_response.status == 200:
             return True
         else:
