@@ -15,8 +15,10 @@ def test_appsapi_all_should_return_list_of_apps(tsuru_apps_list):
 
     apps = AppsAPI(client)
 
-    assert 3 == len(apps.all)
-    assert isinstance(apps.all[0], App)
+    all_apps = apps.all
+
+    assert 3 == len(all_apps)
+    assert isinstance(all_apps[0], App)
     assert client.get.call_args_list == [mock.call('/apps')]
 
 

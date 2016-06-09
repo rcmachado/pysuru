@@ -22,24 +22,14 @@ class App(namedtuple('App', app_attrs), ObjectMixin):
 
 
 class AppsAPI(BaseAPI):
-    _data = []
 
     @property
     def all(self):
-        if not self._data:
-            _, response = self.client.get('/apps')
-            for data in response:
-                self._data.append(App.create(self.client, **data))
-        return self._data
-
-    def __len__(self):
-        return len(self.all)
-
-    def __iter__(self):
-        return iter(self.all)
-
-    def __getitem__(self, key):
-        return self.all[key]
+        result = []
+        _, response = self.client.get('/apps')
+        for data in response:
+            result.append(App.create(self.client, **data))
+        return result
 
     def get(self, name):
         status, response = self.client.get('/apps/{}'.format(name))
