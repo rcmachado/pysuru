@@ -79,5 +79,6 @@ class AppsAPI(BaseAPI):
 class AppAlreadyExists(Exception):
     pass
 
+
 class AppDoesNotExists(Exception):
     pass

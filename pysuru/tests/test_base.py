@@ -1,9 +1,4 @@
 # coding: utf-8
-try:
-    from unittest import mock
-except ImportError:
-    import mock
-
 from pysuru.base import BaseAPI, ObjectMixin
 
 

@@ -23,7 +23,7 @@ def test_appsapi_all_should_return_list_of_apps(tsuru_apps_list):
 
 
 def test_update_should_make_request_with_correct_payload():
-    client= mock.MagicMock()
+    client = mock.MagicMock()
     client.urlopen.return_value.status = 200
 
     payload = {'random-field': 'random-value'}

@@ -34,11 +34,11 @@ def test_create_object_without_credentials_should_raise_error():
     os.environ['TSURU_TOKEN'] = ''
 
     with pytest.raises(ValueError) as excinfo:
-        obj = Tsuru(None, 'something')
+        Tsuru(None, 'something')
     assert 'target' in str(excinfo.value)
 
     with pytest.raises(ValueError) as excinfo:
-        obj = Tsuru('something', None)
+        Tsuru('something', None)
     assert 'token' in str(excinfo.value)
 
 

@@ -1,6 +1,7 @@
 # coding: utf-8
 from pytest import fixture
 
+
 @fixture
 def tsuru_apps_list():
     return """[

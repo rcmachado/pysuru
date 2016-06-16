@@ -1,10 +1,4 @@
 # coding: utf-8
-import json
-
-import certifi
-from urllib3 import PoolManager
-
-
 class BaseAPI(object):
     def __init__(self, client):
         self.client = client
