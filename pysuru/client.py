@@ -5,7 +5,7 @@ from pysuru.apps import AppsAPI
 from pysuru.http import HttpClient
 
 
-class Tsuru(object):
+class TsuruClient(object):
     """
     Main class to interact with Tsuru API
     """

@@ -1,6 +1,6 @@
 # coding: utf-8
-from pysuru.tsuru import Tsuru
+from pysuru.client import TsuruClient
 
 __all__ = (
-    'Tsuru',
+    'TsuruClient',
 )
