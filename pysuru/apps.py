@@ -57,7 +57,7 @@ class AppsAPI(BaseAPI):
         if http_response.status == 200:
             return True
         elif http_response.status == 409:
-            raise
+            raise AppAlreadyExists('App {} already exists'.format(data['name']))
         return False
 
     def update(self, name, data):
