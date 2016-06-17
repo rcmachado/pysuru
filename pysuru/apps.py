@@ -57,6 +57,8 @@ class AppsAPI(BaseAPI):
         http_response = self.client.urlopen('POST', '/apps', body=body)
         if http_response.status == 200:
             return True
+        elif http_response.status == 403:
+            raise QuotaExceeded("Can't create app {}: quota exceeded".format(data['name']))
         elif http_response.status == 409:
             raise AppAlreadyExists('App {} already exists'.format(data['name']))
         return False
@@ -79,9 +81,17 @@ class AppsAPI(BaseAPI):
         return False
 
 
-class AppAlreadyExists(Exception):
+class AppError(Exception):
     pass
 
 
-class AppDoesNotExists(Exception):
+class QuotaExceeded(AppError):
+    pass
+
+
+class AppAlreadyExists(AppError):
+    pass
+
+
+class AppDoesNotExists(AppError):
     pass
