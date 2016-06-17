@@ -9,8 +9,10 @@ from pysuru.services import ServiceInstanceAPI
 app_attrs = (
     'name',
     'description',
+    'ip',
+    'owner',
+    'teamowner',
     'platform',
-    'team_owner',
     'pool',
 )
 
@@ -42,10 +44,11 @@ class AppsAPI(BaseAPI):
         data = {
             'name': response['name'],
             'description': response['description'],
-            'plan': response['plan']['name'],
-            'pool': response['pool'],
-            'team_owner': response['teamowner'],
+            'ip': response['ip'],
+            'owner': response['owner'],
+            'teamowner': response['teamowner'],
             'platform': response['platform'],
+            'pool': response['pool'],
         }
         return App.create(self.client, **data)
 
