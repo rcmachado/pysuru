@@ -1,6 +1,7 @@
 # coding: utf-8
 import json
 from collections import namedtuple
+from urllib.parse import urlencode
 
 from pysuru.base import BaseAPI, ObjectMixin
 from pysuru.services import ServiceInstanceAPI
@@ -51,8 +52,8 @@ class AppsAPI(BaseAPI):
         }
         return App.create(self.client, **data)
 
-    def add(self, data):
-        body = json.dumps(data)
+    def create(self, data):
+        body = urlencode(data)
         http_response = self.client.urlopen('POST', '/apps', body=body)
         if http_response.status == 200:
             return True
