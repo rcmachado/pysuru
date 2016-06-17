@@ -25,8 +25,7 @@ class App(namedtuple('App', app_attrs), ObjectMixin):
 
 class AppsAPI(BaseAPI):
 
-    @property
-    def all(self):
+    def list(self):
         result = []
         _, response = self.client.get('/apps')
         for data in response:

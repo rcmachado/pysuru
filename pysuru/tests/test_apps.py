@@ -15,7 +15,7 @@ def test_appsapi_all_should_return_list_of_apps(tsuru_apps_list):
 
     apps = AppsAPI(client)
 
-    all_apps = apps.all
+    all_apps = apps.list()
 
     assert 3 == len(all_apps)
     assert isinstance(all_apps[0], App)
