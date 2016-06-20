@@ -27,7 +27,9 @@ class BaseAPI(object):
 class ObjectMixin(object):
     @classmethod
     def create(cls, client=None, **kwargs):
-        """Remove any unknown field from kwargs and return the object"""
+        """
+        Creates a new object, removing any unknown fields
+        """
         attrs = {k: kwargs.get(k, None) for k in cls._fields}
         obj = cls(**attrs)
         obj._client = client

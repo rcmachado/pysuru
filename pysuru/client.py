@@ -8,6 +8,8 @@ from pysuru.http import HttpClient
 class TsuruClient(object):
     """
     Main class to interact with Tsuru API
+
+    Provides a single entry-point for all operations against Tsuru API
     """
 
     def __init__(self, target=None, token=None):

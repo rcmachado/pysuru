@@ -6,6 +6,12 @@ from urllib3 import PoolManager
 
 
 class HttpClient(object):
+    """
+    Thin wrapper around urllib3.PoolManager
+
+    Wrapper to urllib3 lib that enables SSL cert validation and
+    provides methods to work with Tsuru API authentication.
+    """
     _conn = None
 
     def __init__(self, target, token):
