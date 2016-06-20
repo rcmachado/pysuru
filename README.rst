@@ -3,7 +3,7 @@ pysuru
 
 |tests_build| |docs_build|
 
-Python lib to access Tsuru API.
+Python lib to interact with Tsuru API. Works with Python 2.7+ and 3.5+.
 
 Install
 -------
@@ -12,23 +12,21 @@ Install
 
     pip install pysuru
 
-Works on Python 2.7 and 3.5.
-
 Usage
 -----
 
 .. code:: python
 
-    from pysuru import Tsuru
+    from pysuru import TsuruClient
 
-    tsuru = Tsuru('<target>', '<token>')
-    for app in tsuru.apps:
+    tsuru = TsuruClient('<target>', '<token>')
+    for app in tsuru.apps.list():
         print(app.name)
 
 Documentation
 -------------
 
-Documentation is available at http://pysuru.readthedocs.org/.
+Full documentation is available at http://pysuru.readthedocs.org/.
 
 Developing
 ----------
@@ -39,11 +37,13 @@ Install development requirements:
 
     pip install -r requirements.txt
 
-Run the tests:
+Run the lint and tests:
 
 .. code:: shell
 
-    make test
+    make lint test
+
+Don't forget to write documentation for your code!
 
 License
 -------
