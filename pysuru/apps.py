@@ -21,7 +21,7 @@ app_attrs = (
 class App(namedtuple('App', app_attrs), ObjectMixin):
     def services(self):
         api = ServiceInstanceAPI(self._client)
-        return api.filter_by_app(self.name)
+        return api.list(app_name=self.name)
 
 
 class AppsAPI(BaseAPI):
