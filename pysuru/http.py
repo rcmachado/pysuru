@@ -86,6 +86,5 @@ class HttpClient(object):
             *args, **kwargs)
         return response
 
-
     def build_url(self, url):
         return 'http://{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
