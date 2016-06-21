@@ -14,6 +14,7 @@ Contents:
    intro
    quick-start
    apps
+   services-instances
 
 
 

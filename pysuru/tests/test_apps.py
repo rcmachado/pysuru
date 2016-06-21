@@ -10,6 +10,24 @@ except ImportError:
 from pysuru.apps import App, AppsAPI, AppDoesNotExists, AppError
 
 
+@mock.patch('pysuru.apps.ServiceInstanceAPI')
+def test_app_services_should_return_a_serviceinstanceapi_with_app_context(
+        ServiceInstanceAPI):
+    app = App.create(**{'name': 'my-app'})
+
+    services = app.services
+
+    assert services == ServiceInstanceAPI.return_value
+    assert ServiceInstanceAPI.call_args_list == [
+        mock.call(mock.ANY, {'app_name': 'my-app'})]
+
+
+def test_app_services_should_raise_error_if_app_doesnt_have_name():
+    app = App.create(**{'name': ''})
+    with pytest.raises(ValueError):
+        app.services
+
+
 def test_appsapi_all_should_return_list_of_apps(tsuru_apps_list):
     client = mock.MagicMock()
     client.get.return_value = (200, json.loads(tsuru_apps_list))

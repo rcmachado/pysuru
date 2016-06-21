@@ -5,8 +5,9 @@ class BaseAPI(object):
 
     Provides basic skeleton for API related classes
     """
-    def __init__(self, client):
+    def __init__(self, client, context=None):
         self.client = client
+        self.context = context or {}
 
     def list(self, *args, **kwargs):
         raise NotImplemented('Object list not implemented')

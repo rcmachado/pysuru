@@ -5,8 +5,8 @@ from collections import namedtuple
 from pysuru.base import BaseAPI, ObjectMixin
 
 
-_service_instance = namedtuple('ServiceInstance',
-                               ('name', 'description', 'type', 'plan'))
+_service_instance = namedtuple(
+    'ServiceInstance', ('name', 'description', 'type', 'plan', 'teamowner'))
 
 
 class ServiceInstance(_service_instance, ObjectMixin):
@@ -14,7 +14,9 @@ class ServiceInstance(_service_instance, ObjectMixin):
 
 
 class ServiceInstanceAPI(BaseAPI):
-    def list(self, app_name):
+    def list(self, app_name=None):
+        if 'app_name' in self.context:
+            app_name = self.context['app_name']
         _, response = self._filter_by_app_name(app_name)
 
         services = []

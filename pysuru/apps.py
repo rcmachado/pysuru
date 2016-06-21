@@ -17,9 +17,11 @@ app_attrs = (
 
 
 class App(namedtuple('App', app_attrs), ObjectMixin):
+    @property
     def services(self):
-        api = ServiceInstanceAPI(self._client)
-        return api.list(app_name=self.name)
+        if not self.name:
+            raise ValueError('Cannot get services for an app without a name')
+        return ServiceInstanceAPI(self._client, {'app_name': self.name})
 
 
 class AppsAPI(BaseAPI):
