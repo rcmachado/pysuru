@@ -58,6 +58,15 @@ class AppsAPI(BaseAPI):
         else:
             return False
 
+    def delete(self, name):
+        response = self.client.urlopen('DELETE', '/apps/{}'.format(name))
+        if response.status == 200:
+            return True
+        elif response.status == 404:
+            raise AppDoesNotExists('App {} does not exists.'.format(name))
+
+        raise AppError('Unknown error deleting app {}'.format(name))
+
     def bind_service(self, name, service_instance):
         path = ('/services/{}/instances/{}/{}'
                 .format(service_instance.type, service_instance.name, name))
