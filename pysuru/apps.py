@@ -53,9 +53,7 @@ class AppsAPI(BaseAPI):
         return False
 
     def update(self, name, data):
-        body = json.dumps(data)
-        http_response = self.client.urlopen('POST', '/apps/{}'.format(name),
-                                            body=body)
+        http_response = self.client.put('/apps/{}'.format(name), data=data)
         if http_response.status == 200:
             return True
         else:
