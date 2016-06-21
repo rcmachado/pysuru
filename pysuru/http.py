@@ -47,7 +47,7 @@ class HttpClient(object):
         headers = dict(headers or {})
         headers.update(self.headers)
         url = self.build_url(path)
-        return self.conn.urlopen(method, url, headers=headers, body=body)
+        return self.conn.request(method, url, headers=headers, data=body)
 
     def get(self, *args, **kwargs):
         """
@@ -63,4 +63,4 @@ class HttpClient(object):
         return response.status, content
 
     def build_url(self, url):
-        return '{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
+        return 'http://{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
