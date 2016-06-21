@@ -47,7 +47,7 @@ class HttpClient(object):
         headers = dict(headers or {})
         headers.update(self.headers)
         url = self.build_url(path)
-        return self.conn.request(method, url, headers=headers, data=body)
+        return self.conn.request(method, url, headers=headers, fields=body)
 
     def get(self, *args, **kwargs):
         """

@@ -21,7 +21,7 @@ def test_urlopen_should_build_full_url_using_target_and_path():
     expected_url = 'http://example.com/api/sample'
 
     assert client.conn.request.call_args_list == [
-        mock.call('GET', expected_url, headers=mock.ANY, data=None)]
+        mock.call('GET', expected_url, headers=mock.ANY, fields=None)]
 
 
 def test_urlopen_should_merge_headers_argument_with_headers_attribute():
@@ -39,4 +39,4 @@ def test_urlopen_should_merge_headers_argument_with_headers_attribute():
     client.urlopen('GET', '/sample', headers=my_headers)
 
     assert client.conn.request.call_args_list == [
-        mock.call('GET', mock.ANY, headers=expected_headers, data=None)]
+        mock.call('GET', mock.ANY, headers=expected_headers, fields=None)]
