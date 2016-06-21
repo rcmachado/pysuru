@@ -72,7 +72,7 @@ class HttpClient(object):
         response = self.conn.request_encode_body(
             'POST', url, fields=data, headers=headers, encode_multipart=False,
             *args, **kwargs)
-        return response.status, response.read()
+        return response
 
     def build_url(self, url):
         return 'http://{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
