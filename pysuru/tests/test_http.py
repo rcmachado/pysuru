@@ -14,14 +14,14 @@ def test_headers_attribute_should_always_have_authorization_header_with_token():
 
 
 def test_urlopen_should_build_full_url_using_target_and_path():
-    client = HttpClient('http://example.com/api', 'TOKEN')
-    client.conn.urlopen = mock.MagicMock()
+    client = HttpClient('example.com/api', 'TOKEN')
+    client.conn.request = mock.MagicMock()
     client.urlopen('GET', '/sample')
 
     expected_url = 'http://example.com/api/sample'
 
-    assert client.conn.urlopen.call_args_list == [
-        mock.call('GET', expected_url, headers=mock.ANY, body=None)]
+    assert client.conn.request.call_args_list == [
+        mock.call('GET', expected_url, headers=mock.ANY, data=None)]
 
 
 def test_urlopen_should_merge_headers_argument_with_headers_attribute():
@@ -35,8 +35,8 @@ def test_urlopen_should_merge_headers_argument_with_headers_attribute():
     }
 
     client = HttpClient('TARGET', 'TOKEN')
-    client.conn.urlopen = mock.MagicMock()
+    client.conn.request = mock.MagicMock()
     client.urlopen('GET', '/sample', headers=my_headers)
 
-    assert client.conn.urlopen.call_args_list == [
-        mock.call('GET', mock.ANY, headers=expected_headers, body=None)]
+    assert client.conn.request.call_args_list == [
+        mock.call('GET', mock.ANY, headers=expected_headers, data=None)]
