@@ -41,16 +41,7 @@ class AppsAPI(BaseAPI):
         if status != 200:
             return False
 
-        data = {
-            'name': response['name'],
-            'description': response['description'],
-            'ip': response['ip'],
-            'owner': response['owner'],
-            'teamowner': response['teamowner'],
-            'platform': response['platform'],
-            'pool': response['pool'],
-        }
-        return App.create(self.client, **data)
+        return App.create(self.client, **response)
 
     def create(self, data):
         body = urlencode(data)
