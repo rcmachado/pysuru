@@ -44,7 +44,7 @@ class AppsAPI(BaseAPI):
 
     def create(self, data):
         http_response = self.client.post('/apps', data=data)
-        if http_response.status == 200:
+        if http_response.status == 201:
             return True
         elif http_response.status == 403:
             raise QuotaExceeded("Can't create app {}: quota exceeded".format(data['name']))
