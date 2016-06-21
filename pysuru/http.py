@@ -62,5 +62,17 @@ class HttpClient(object):
             content = json.loads(response.data.decode('utf-8'))
         return response.status, content
 
+    def post(self, url, data, *args, **kwargs):
+        """Send a post request to API"""
+        url = self.build_url(url)
+        headers = {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        }
+        headers.update(self.headers)
+        response = self.conn.request_encode_body(
+            'POST', url, fields=data, headers=headers, encode_multipart=False,
+            *args, **kwargs)
+        return response.status, response.read()
+
     def build_url(self, url):
         return 'http://{}/{}'.format(self.target.rstrip('/'), url.lstrip('/'))
