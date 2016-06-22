@@ -1,18 +1,29 @@
 Services Instances
 ==================
 
-Services instances associated with an specific app can be consulted
-directly through the ``App`` instance, via ``services`` attribute:
+Creating a service instance
+---------------------------
+
+To create a new instance of a service:
+
+.. code:: python
+
+    data = {
+        'name': 'my-dummy-instance',
+        'service': 'dummy-service',
+        'plan': 'dummy-plan',
+        'description': 'A service instance with a dumb name',
+        'owner': 'my-team',
+    }
+    client = TsuruClient()
+    client.services_instances.create(data)
+
+Binding to an app
+-----------------
+
+To bind a service instance to an app, call ``bind`` method:
 
 .. code:: python
 
     client = TsuruClient()
-    app = client.apps.get('my-awesome-app')
-
-    for service_instance in app.services.list():
-        print('Service {si.name} is of type {si.type} with plan {si.plan}'
-              .format(si=service_instance))
-
-When accessing via an ``App`` instance, only services instances
-associated with the app will be returned - even if you provide the
-``app_name`` parameter to ``list`` method.
+    app.services.bind('my-service-instance')

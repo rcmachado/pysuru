@@ -3,6 +3,7 @@ import os
 
 from pysuru.apps import AppsAPI
 from pysuru.http import HttpClient
+from pysuru.services import ServiceInstanceAPI
 
 
 class TsuruClient(object):
@@ -42,3 +43,7 @@ class TsuruClient(object):
     @property
     def apps(self):
         return AppsAPI(self.client)
+
+    @property
+    def services_instances(self):
+        return ServiceInstanceAPI(self.client)
