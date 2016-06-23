@@ -26,4 +26,4 @@ To bind a service instance to an app, call ``bind`` method:
 .. code:: python
 
     client = TsuruClient()
-    app.services.bind('my-service-instance')
+    app.services.bind('service-type', 'my-service-instance')

@@ -74,7 +74,7 @@ class HttpClient(object):
             *args, **kwargs)
         return response
 
-    def put(self, url, data, *args, **kwargs):
+    def put(self, url, data=None, *args, **kwargs):
         """Send a post request to API"""
         url = self.build_url(url)
         headers = {

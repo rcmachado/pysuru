@@ -1,5 +1,4 @@
 # coding: utf-8
-import json
 from collections import namedtuple
 
 from pysuru.base import BaseAPI, ObjectMixin
@@ -49,6 +48,18 @@ class ServiceInstanceAPI(BaseAPI):
         raise ServiceInstanceError(
             'Unknown error when creating service instance {}'
             .format(data['name']))
+
+    def bind(self, service, service_instance, app_name=None):
+        if 'app_name' in self.context:
+            app_name = self.context['app_name']
+        response = self.client.put('/services/{}/instances/{}/{}'
+                                   .format(service, service_instance, app_name))
+        if response.status == 200:
+            return True
+
+        raise ServiceInstanceError(
+            'Unknown error when bind service instance {} to app {}'
+            .format(service_instance, app_name))
 
 
 class ServiceInstanceError(Exception):
