@@ -27,6 +27,10 @@ class BaseAPI(object):
 
 class ObjectMixin(object):
     @classmethod
+    def ATTRIBUTES(cls):
+        return cls._fields
+
+    @classmethod
     def create(cls, client=None, **kwargs):
         """
         Creates a new object, removing any unknown fields

@@ -15,6 +15,7 @@ Contents:
    quick-start
    apps
    services-instances
+   advanced-usage
 
 
 

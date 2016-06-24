@@ -18,6 +18,10 @@ def test_baseobject_create_should_ignore_unknown_fields():
     assert 'unknown' not in created.attrs
 
 
+def test_objectmixin_attributes_should_return_object_properties():
+    assert sorted(_DummyObject.ATTRIBUTES()) == sorted(('field1', 'field2'))
+
+
 class _DummyObject(ObjectMixin):
     _fields = ('field1', 'field2')
 
