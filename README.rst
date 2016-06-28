@@ -31,7 +31,14 @@ Full documentation is available at http://pysuru.readthedocs.org/.
 Developing
 ----------
 
-Install development requirements:
+We use tox_ to test in multiple versions:
+
+.. code:: shell
+
+    tox
+
+If you prefer to run the tests separately, install development
+requirements:
 
 .. code:: shell
 
@@ -58,3 +65,4 @@ MIT. See LICENSE_.
 .. |docs_build| image:: https://readthedocs.org/projects/pysuru/badge/?version=latest
     :target: http://pysuru.readthedocs.org/
     :alt: Build status of documentation
+.. _tox: https://pypi.python.org/pypi/tox
