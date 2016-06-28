@@ -3,7 +3,8 @@ pysuru
 
 |tests_build| |docs_build|
 
-Python lib to interact with Tsuru API. Works with Python 2.7+ and 3.5+.
+Python lib to interact with Tsuru API. Tested woth Python 2.7, 3.3, 3.4
+and 3.5 (latest versions).
 
 Install
 -------
